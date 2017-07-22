@@ -20,9 +20,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4489077759265576}
   - component: {fileID: 33762485151453546}
-  - component: {fileID: 135328172783309696}
   - component: {fileID: 23195803365659412}
   - component: {fileID: 114954629449923502}
+  - component: {fileID: 58930062714770058}
   m_Layer: 0
   m_Name: Sphere 1
   m_TagString: Untagged
@@ -37,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1284470979335128}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.99, y: 1.06, z: 0}
+  m_LocalPosition: {x: -8.815799, y: -1.0044608, z: 0}
   m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_Children: []
   m_Father: {fileID: 0}
@@ -82,6 +82,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1284470979335128}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!58 &58930062714770058
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1284470979335128}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!114 &114954629449923502
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -93,20 +108,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22006eed32ab4164b95082e491f5449f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slider: {fileID: 0}
-  healthText: {fileID: 0}
-  coin: {fileID: 1284470979335128}
-  maxAmount: 20
-  randomAmount: 1
---- !u!135 &135328172783309696
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1284470979335128}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  healthRestore: 10

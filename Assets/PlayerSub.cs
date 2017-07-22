@@ -14,12 +14,10 @@ public class PlayerSub : MonoBehaviour
     public float PropellerSpeed;
     public GameObject Torpedo;
     public Transform FiringPoint;
+    public float TorpDamage = 20;
     Rigidbody2D r;
-    int Health;
-    public int StartingHealth;
 	void Start()
     {
-        Health = StartingHealth;
         instance = this;
         sr = GetComponentInChildren<SpriteRenderer>();
         r = GetComponent<Rigidbody2D>();
@@ -30,11 +28,7 @@ public class PlayerSub : MonoBehaviour
     {
         if (c.gameObject.CompareTag("Enemy"))
         {
-            Health -= 1;
-            if (Health <= 0)
-            {
-                Destroy(gameObject);
-            }
+            HealthSystem.instance.slider.value -= TorpDamage;
         }
     }
 
@@ -44,7 +38,7 @@ public class PlayerSub : MonoBehaviour
         Vector2 direction = (mouseScreenPosition - (Vector2)transform.position).normalized;
         transform.up = Vector3.Lerp(transform.up, direction, RotateSpeed);
         Vector2 v = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-        r.AddForce(v.normalized * Speed);
+        r.AddRelativeForce(v.normalized * Speed);
 	}
 
     void Update()

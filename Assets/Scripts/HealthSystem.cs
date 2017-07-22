@@ -7,19 +7,20 @@ using UnityEngine.UI;
 
 public class HealthSystem : MonoBehaviour {
 
+    public static HealthSystem instance;
 	public Slider slider;
-	public int damage;
-    public int damageDelay;
+	public float damage;
+    public float damageDelay;
 
-    public Text alerts;
-    public Text healthText;
+    //public Text alerts;
+    //public Text healthText;
 
 	void Start () {
-		slider.wholeNumbers = true;
+        instance = this;
 		slider.value = 100;
 
-        alerts = GameObject.FindWithTag("MiddleAlerts").GetComponent<Text>();
-        healthText = GameObject.Find("HealthText").GetComponent<Text>();
+        //alerts = GameObject.FindWithTag("MiddleAlerts").GetComponent<Text>();
+        //healthText = GameObject.Find("HealthText").GetComponent<Text>();
 
         StartCoroutine (damageSubmarine());
 	}
@@ -29,7 +30,7 @@ public class HealthSystem : MonoBehaviour {
             if (Manager.finished)
                 break;
 			slider.value -= damage;
-            healthText.text = slider.value.ToString();
+            //healthText.text = slider.value.ToString();
 
 			yield return new WaitForSeconds(damageDelay);
 		}
@@ -38,12 +39,12 @@ public class HealthSystem : MonoBehaviour {
 	
 	void Update () {		
 		if (slider.value <= 0) {
-            alerts.color = Color.red;
-            alerts.text = "You died!";
+            //alerts.color = Color.red;
+            //alerts.text = "You died!";
             Manager.finished = true;
         } else if (Manager.collectedParts >= Manager.partsNeeded) {
-            alerts.color = Color.green;
-            alerts.text = "You win!";
+            //alerts.color = Color.green;
+            //alerts.text = "You win!";
 
             Manager.finished = true;
         }
