@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerSub : MonoBehaviour
+public class EnemySub : MonoBehaviour
 {
-    public static PlayerSub instance;
     public Sprite s1;
     public Sprite s2;
     int SpriteNum = 1;
@@ -14,30 +13,26 @@ public class PlayerSub : MonoBehaviour
     public float PropellerSpeed;
     public GameObject Torpedo;
     public Transform FiringPoint;
+    public float FireDelay;
     Rigidbody2D r;
-	void Start()
+    void Start()
     {
-        instance = this;
         sr = GetComponentInChildren<SpriteRenderer>();
         r = GetComponent<Rigidbody2D>();
         InvokeRepeating("SwapSprite", PropellerSpeed, PropellerSpeed);
-	}
-	
-	void FixedUpdate()
-    {
-        Vector2 mouseScreenPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 direction = (mouseScreenPosition - (Vector2)transform.position).normalized;
-        transform.up = Vector3.Lerp(transform.up, direction, RotateSpeed);
-        Vector2 v = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-        r.AddForce(v.normalized * Speed);
-	}
+        InvokeRepeating("Fire", FireDelay, FireDelay);
+    }
 
-    void Update()
+    void FixedUpdate()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            Instantiate(Torpedo, FiringPoint.position, transform.rotation);
-        }
+        Vector2 direction = ((Vector2)PlayerSub.instance.transform.position - (Vector2)transform.position).normalized;
+        transform.up = Vector3.Lerp(transform.up, direction, RotateSpeed);
+        r.AddRelativeForce(new Vector3(1, 1, 0) * Speed);
+    }
+
+    void Fire()
+    {
+        Instantiate(Torpedo, FiringPoint.position, transform.rotation);
     }
 
     void SwapSprite()

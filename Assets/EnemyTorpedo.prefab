@@ -40,8 +40,8 @@ GameObject:
   - component: {fileID: 50664492650218538}
   - component: {fileID: 114592589821411774}
   m_Layer: 0
-  m_Name: Torpedo
-  m_TagString: Player
+  m_Name: EnemyTorpedo
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
