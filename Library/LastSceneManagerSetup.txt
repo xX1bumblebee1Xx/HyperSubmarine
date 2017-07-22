@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/NathanScene.unity
+- path: Assets/QuinnScene.unity
   isLoaded: 1
   isActive: 1
