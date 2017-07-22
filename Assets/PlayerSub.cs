@@ -15,15 +15,30 @@ public class PlayerSub : MonoBehaviour
     public GameObject Torpedo;
     public Transform FiringPoint;
     Rigidbody2D r;
+    int Health;
+    public int StartingHealth;
 	void Start()
     {
+        Health = StartingHealth;
         instance = this;
         sr = GetComponentInChildren<SpriteRenderer>();
         r = GetComponent<Rigidbody2D>();
         InvokeRepeating("SwapSprite", PropellerSpeed, PropellerSpeed);
 	}
-	
-	void FixedUpdate()
+
+    void OnTriggerEnter2D(Collider2D c)
+    {
+        if (c.gameObject.CompareTag("Enemy"))
+        {
+            Health -= 1;
+            if (Health <= 0)
+            {
+                Destroy(gameObject);
+            }
+        }
+    }
+
+    void FixedUpdate()
     {
         Vector2 mouseScreenPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 direction = (mouseScreenPosition - (Vector2)transform.position).normalized;

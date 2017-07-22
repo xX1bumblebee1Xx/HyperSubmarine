@@ -15,12 +15,28 @@ public class EnemySub : MonoBehaviour
     public Transform FiringPoint;
     public float FireDelay;
     Rigidbody2D r;
+    public int StartingHealth;
+    int Health;
+
     void Start()
     {
+        Health = StartingHealth;
         sr = GetComponentInChildren<SpriteRenderer>();
         r = GetComponent<Rigidbody2D>();
         InvokeRepeating("SwapSprite", PropellerSpeed, PropellerSpeed);
         InvokeRepeating("Fire", FireDelay, FireDelay);
+    }
+
+    void OnTriggerEnter2D(Collider2D c)
+    {
+        if (c.gameObject.CompareTag("Player"))
+        {
+            Health -= 1;
+            if (Health <= 0)
+            {
+                Destroy(gameObject);
+            }
+        }
     }
 
     void FixedUpdate()

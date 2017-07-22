@@ -165,6 +165,7 @@ MonoBehaviour:
   Torpedo: {fileID: 1978964914348626, guid: 89aa03b0b05be2649bd7d53276f86113, type: 2}
   FiringPoint: {fileID: 4382715427069570}
   FireDelay: 4
+  StartingHealth: 3
 --- !u!212 &212560600881181326
 SpriteRenderer:
   m_ObjectHideFlags: 1
