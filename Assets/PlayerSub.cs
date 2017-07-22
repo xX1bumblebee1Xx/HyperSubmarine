@@ -6,6 +6,8 @@ public class PlayerSub : MonoBehaviour
 {
     public float Speed;
     public float RotateSpeed;
+    public GameObject Torpedo;
+    public Transform FiringPoint;
     Rigidbody2D r;
 	void Start()
     {
@@ -20,4 +22,12 @@ public class PlayerSub : MonoBehaviour
         Vector2 v = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         r.AddForce(v.normalized * Speed);
 	}
+
+    void Update()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            Instantiate(Torpedo, FiringPoint.position, transform.rotation);
+        }
+    }
 }
