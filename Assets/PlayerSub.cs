@@ -14,20 +14,10 @@ public class PlayerSub : MonoBehaviour
 	
 	void FixedUpdate()
     {
-        Vector3 m = Input.mousePosition;
-        //Quaternion targetRotation = Quaternion.LookRotation(m - transform.position);
-        //transform.rotation = transform.rotation * Quaternion.Inverse(targetRotation);
-        //Debug.Log(AngleBetweenVector2(transform.position, m));
-        //float targetAngle = (Mathf.Atan2(m.y, m.x) * Mathf.Rad2Deg) - 90f;
-        //if (transform.eulerAngles.z < targetAngle)
-        //{
-        //    r.AddTorque(RotateSpeed);
-        //}
-        //else
-        //{
-        //    r.AddTorque(-RotateSpeed);
-        //}
+        Vector2 mouseScreenPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 direction = (mouseScreenPosition - (Vector2)transform.position).normalized;
+        transform.up = Vector3.Lerp(transform.up, direction, RotateSpeed);
         Vector2 v = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-        r.AddRelativeForce(v.normalized * Speed);
+        r.AddForce(v.normalized * Speed);
 	}
 }

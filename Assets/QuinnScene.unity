@@ -108,18 +108,16 @@ NavMeshSettings:
     tileSize: 256
     accuratePlacement: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &737906662
+--- !u!1 &328968042
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 737906667}
-  - component: {fileID: 737906666}
-  - component: {fileID: 737906665}
-  - component: {fileID: 737906664}
-  - component: {fileID: 737906663}
+  - component: {fileID: 328968044}
+  - component: {fileID: 328968043}
+  - component: {fileID: 328968045}
   m_Layer: 0
   m_Name: PlayerSubmarine
   m_TagString: Untagged
@@ -127,13 +125,40 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!50 &737906663
+--- !u!114 &328968043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 328968042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2b62da789fd1f94482fc538e9674991, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Speed: 10
+  RotateSpeed: 0.2
+--- !u!4 &328968044
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 328968042}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 10, y: 20, z: 1}
+  m_Children:
+  - {fileID: 737906667}
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &328968045
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 737906662}
+  m_GameObject: {fileID: 328968042}
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
@@ -147,6 +172,23 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!1 &737906662
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 737906667}
+  - component: {fileID: 737906666}
+  - component: {fileID: 737906664}
+  m_Layer: 0
+  m_Name: SubSprite
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!61 &737906664
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -172,19 +214,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.16, y: 0.16}
   m_EdgeRadius: 0
---- !u!114 &737906665
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 737906662}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2b62da789fd1f94482fc538e9674991, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Speed: 10
-  RotateSpeed: 0
 --- !u!212 &737906666
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -234,11 +263,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 737906662}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.0925, z: 0}
-  m_LocalScale: {x: 10, y: 20, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_Father: {fileID: 328968044}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1690915538
 GameObject:
