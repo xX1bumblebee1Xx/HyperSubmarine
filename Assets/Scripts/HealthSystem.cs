@@ -26,6 +26,8 @@ public class HealthSystem : MonoBehaviour {
 
     public IEnumerator damageSubmarine() {
 		while (true) {
+            if (Manager.finished)
+                break;
 			slider.value -= damage;
             healthText.text = slider.value.ToString();
 
@@ -38,6 +40,12 @@ public class HealthSystem : MonoBehaviour {
 		if (slider.value <= 0) {
             alerts.color = Color.red;
             alerts.text = "You died!";
+            Manager.finished = true;
+        } else if (Manager.collectedParts >= Manager.partsNeeded) {
+            alerts.color = Color.green;
+            alerts.text = "You win!";
+
+            Manager.finished = true;
         }
-	}
+    }
 }

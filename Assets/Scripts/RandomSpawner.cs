@@ -13,6 +13,9 @@ public class RandomSpawner : MonoBehaviour {
     public int i = 0;
 	
 	void Update () {
+        if (Manager.finished)
+            return;
+
         if (randomDelay)
             delay = Random.Range(minDelay, maxDelay);
 
